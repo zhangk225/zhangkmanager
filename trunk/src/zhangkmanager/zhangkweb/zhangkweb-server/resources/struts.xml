@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="zhangk-json" extends="json-default" abstract="true">
+		<result-types>
+			<result-type name="String"
+				class="com.zhangkssh.baseframe.struts.StringResult" />
+		</result-types>
+		<global-results>
+			<result type="json">
+				<!-- 这里指定将被Struts2序列化的属性，该属性在action中必须有对应的getter方法 -->
+				<!-- 默认将会序列所有有返回值的getter方法的值，而无论该方法是否有对应属性 -->
+				<param name="root">jsonMap</param>
+				<!-- 指定是否序列化空的属性 -->
+				<param name="excludeNullProperties">true</param>
+				<!-- 这里指定将序列化dataMap中的那些属性 -->
+				<!--<param name="includeProperties"> </param> -->
+				<!-- 这里指定将要从dataMap中排除那些属性，这些排除的属性将不被序列化，一半不与上边的参数配置同时出现 -->
+				<!-- <param name="excludeProperties"> </param> -->
+			</result>
+
+			<result name="string" type="String">
+				<param name="stringName">strs</param>
+			</result>
+
+		</global-results>
+	</package>
+	<package name="zhangk-exception" extends="zhangk-json"
+		namespace="/">
+		<global-results>
+			<result name="errHandler" type="chain">
+				<param name="actionName">errorProcessor</param>
+				<param name="namespace">/</param>
+			</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="errHandler"
+				exception="com.zhangkssh.frame.util">
+			</exception-mapping>
+		</global-exception-mappings>
+		<action name="errorProcessor" class="frame_exception">
+		</action>
+	</package>
+	<include file="com/zhangkssh/plugins/interfaces/interfaces.xml" />
+	<constant name="struts.custom.i18n.resources" value="globalMessages" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.custom.i18n.resources" value="ApplicationResources" />
+	<constant name="struts.objectFactory"
+		value="org.apache.struts2.spring.StrutsSpringObjectFactory" />
+</struts>

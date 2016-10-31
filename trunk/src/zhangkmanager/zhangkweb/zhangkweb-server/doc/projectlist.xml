@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<projects>
+<project>
+<projectId>0</projectId>
+<projectName>frame</projectName>
+<projectPath>com/frame/</projectPath>
+<projectDescription>框架项目基础</projectDescription>
+</project>
+<project>
+<projectId>1</projectId>
+<projectName>cloud</projectName>
+<projectPath>com/jingcloud/</projectPath>
+<projectDescription>cloud基础</projectDescription>
+</project>
+<project>
+<projectId>2</projectId>
+<projectName>vmsecurity</projectName>
+<projectPath>com/jingcloud/vmsecurity/</projectPath>
+<projectDescription>安全组件</projectDescription>
+</project>
+<project>
+<projectId>3</projectId>
+<projectName>vmsecurity</projectName>
+<projectPath>com/jingcloud/vmsecurity/</projectPath>
+<projectDescription>发布接口</projectDescription>
+</project>
+</projects>
